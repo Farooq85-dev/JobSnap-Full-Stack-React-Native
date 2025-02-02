@@ -53,6 +53,12 @@ const RootLayout = () => {
           headerTitle: "Sign Up",
         }}
       />
+      <Stack.Screen
+        name="sign-in"
+        options={{
+          headerTitle: "Sign In",
+        }}
+      />
     </Stack>
   );
 };
