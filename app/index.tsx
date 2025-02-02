@@ -2,10 +2,15 @@
 import { Image, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 // Local Imports...
-import ButtonComp from "../components/Button";
-import { styles } from "../styles/index";
+import ButtonComp from "@/components/Button";
+import { styles } from "@/styles/screens/index";
+import { useRouter } from "expo-router";
 
 const WelcomeScreen = () => {
+  const router = useRouter();
+  const handlePress = () => {
+    router.push("/sign-up");
+  };
   return (
     <SafeAreaView style={styles.safeAreaViewStyle}>
       <ScrollView contentContainerStyle={styles.scrollViewStyle}>
@@ -22,7 +27,10 @@ const WelcomeScreen = () => {
               are waiting for you.
             </Text>
           </View>
-          <ButtonComp styles={styles.btnStyle} title="Continue with email" />
+          <ButtonComp
+            onPress={() => handlePress()}
+            title="Continue with email"
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

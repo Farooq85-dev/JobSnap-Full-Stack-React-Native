@@ -29,6 +29,11 @@ const RootLayout = () => {
     <Stack
       screenOptions={{
         headerTitleAlign: "left",
+        headerTintColor: colorsPalette.tertiaryColor,
+        animation: "slide_from_right",
+        headerStyle: {
+          backgroundColor: colorsPalette.secondaryColor,
+        },
         headerTitleStyle: {
           fontFamily: "KSE",
         },
@@ -40,11 +45,12 @@ const RootLayout = () => {
         name="index"
         options={{
           headerTitle: "JOBSNAP",
-          headerTintColor: colorsPalette.tertiaryColor,
-
-          headerStyle: {
-            backgroundColor: colorsPalette.secondaryColor,
-          },
+        }}
+      />
+      <Stack.Screen
+        name="sign-up"
+        options={{
+          headerTitle: "Sign Up",
         }}
       />
     </Stack>

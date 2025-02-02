@@ -1,6 +1,7 @@
 // Libraries Imports...
-import { colorsPalette } from "@/constants/colors";
 import { StyleSheet } from "react-native";
+// Local Imports...
+import { colorsPalette } from "@/constants/colors";
 
 export const styles = StyleSheet.create({
   safeAreaViewStyle: { flex: 1, padding: 20 },
@@ -24,11 +25,4 @@ export const styles = StyleSheet.create({
     textAlign: "center",
   },
   textLikeSpanStyle: { fontFamily: "KSE", color: colorsPalette.primaryColor },
-  btnStyle: {
-    backgroundColor: colorsPalette.secondaryColor,
-    paddingHorizontal: 20,
-    paddingVertical: 15,
-    borderRadius: 8,
-    alignItems: "center",
-  },
 });
