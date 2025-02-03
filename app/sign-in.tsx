@@ -9,6 +9,8 @@ import { colorsPalette } from "@/constants/colors";
 import { userSignInSchema } from "@/schema";
 import { styles } from "@/styles/screens/sign-up";
 import { Link } from "expo-router";
+import { userSignIn } from "@/appWrite";
+import Toast from "react-native-toast-message";
 
 const SignInScreen = () => {
   return (
@@ -19,13 +21,26 @@ const SignInScreen = () => {
             userEmail: "",
             userPassword: "",
           }}
-          onSubmit={(values, errors) => {
+          onSubmit={async (values, errors) => {
+            Toast.show({
+              type: "success",
+              position: "top",
+              text1: "Hello",
+              text2: "This is a toast message!",
+            });
             if (!values.userEmail || !values.userPassword) {
               return Alert.alert("Something is missing!");
             }
-            console.log(values);
 
-            errors.resetForm();
+            try {
+              const user = await userSignIn(
+                values.userEmail,
+                values.userPassword
+              );
+              errors.resetForm();
+            } catch (error) {
+              console.log(error);
+            }
           }}
           validationSchema={userSignInSchema}
         >

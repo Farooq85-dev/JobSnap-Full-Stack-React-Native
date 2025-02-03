@@ -10,10 +10,12 @@ import InputComp from "@/components/Input";
 import { colorsPalette } from "@/constants/colors";
 import { userSignUpSchema } from "@/schema";
 import { styles } from "@/styles/screens/sign-up";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
+import { userSignUp } from "@/appWrite/index";
 
 const SignUpScreen = () => {
   const [checked, setChecked] = useState("");
+  const router = useRouter();
 
   return (
     <SafeAreaView style={styles.safeAreaViewStyle}>
@@ -25,7 +27,7 @@ const SignUpScreen = () => {
             userPassword: "",
             userConfirmPassword: "",
           }}
-          onSubmit={(values, errors) => {
+          onSubmit={async (values, errors) => {
             if (
               !values.userName ||
               !values.userEmail ||
@@ -44,8 +46,19 @@ const SignUpScreen = () => {
               ...values,
               userRole: checked,
             };
-            console.log(data);
-            errors.resetForm();
+
+            try {
+              const user = await userSignUp(
+                values.userEmail,
+                values.userPassword,
+                values.userName
+              );
+              errors.resetForm();
+              setChecked("");
+              router.push("/sign-in");
+            } catch (error) {
+              console.log(error);
+            }
           }}
           validationSchema={userSignUpSchema}
         >
