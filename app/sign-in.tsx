@@ -2,6 +2,7 @@
 import { View, Text, ScrollView, Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Formik } from "formik";
+import Toast from "react-native-toast-message";
 // Local Imports...
 import ButtonComp from "@/components/Button";
 import InputComp from "@/components/Input";
@@ -10,7 +11,7 @@ import { userSignInSchema } from "@/schema";
 import { styles } from "@/styles/screens/sign-up";
 import { Link } from "expo-router";
 import { userSignIn } from "@/appWrite";
-import Toast from "react-native-toast-message";
+import { toastConfig } from "@/config/toast";
 
 const SignInScreen = () => {
   return (
@@ -22,23 +23,35 @@ const SignInScreen = () => {
             userPassword: "",
           }}
           onSubmit={async (values, errors) => {
-            Toast.show({
-              type: "success",
-              position: "top",
-              text1: "Hello",
-              text2: "This is a toast message!",
-            });
             if (!values.userEmail || !values.userPassword) {
               return Alert.alert("Something is missing!");
             }
-
             try {
               const user = await userSignIn(
                 values.userEmail,
                 values.userPassword
               );
+              Toast.show({
+                type: "success",
+                position: "bottom",
+                text2: "You have been signin successfully!",
+                visibilityTime: 3000,
+                autoHide: true,
+                topOffset: 50,
+                bottomOffset: 50,
+              });
+              console.log(user);
               errors.resetForm();
-            } catch (error) {
+            } catch (error: any) {
+              Toast.show({
+                type: "error",
+                position: "bottom",
+                text2: error?.message,
+                visibilityTime: 3000,
+                autoHide: true,
+                topOffset: 50,
+                bottomOffset: 50,
+              });
               console.log(error);
             }
           }}
@@ -105,6 +118,7 @@ const SignInScreen = () => {
             </View>
           )}
         </Formik>
+        <Toast config={toastConfig} />
       </ScrollView>
     </SafeAreaView>
   );

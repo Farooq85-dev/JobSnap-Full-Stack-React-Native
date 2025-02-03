@@ -3,6 +3,7 @@ import { useState } from "react";
 import { View, Text, ScrollView, Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Formik } from "formik";
+import Toast from "react-native-toast-message";
 // Local Imports...
 import ButtonComp from "@/components/Button";
 import RadioButtonsComp from "@/components/Checkbox";
@@ -12,6 +13,7 @@ import { userSignUpSchema } from "@/schema";
 import { styles } from "@/styles/screens/sign-up";
 import { Link, useRouter } from "expo-router";
 import { userSignUp } from "@/appWrite/index";
+import { toastConfig } from "@/config/toast";
 
 const SignUpScreen = () => {
   const [checked, setChecked] = useState("");
@@ -53,10 +55,31 @@ const SignUpScreen = () => {
                 values.userPassword,
                 values.userName
               );
+              Toast.show({
+                type: "success",
+                position: "top",
+                text2: "You have been registered successfully!",
+                visibilityTime: 3000,
+                autoHide: true,
+                topOffset: 50,
+                bottomOffset: 50,
+              });
+              console.log(user);
               errors.resetForm();
               setChecked("");
-              router.push("/sign-in");
-            } catch (error) {
+              setTimeout(() => {
+                router.push("/sign-in");
+              }, 3500);
+            } catch (error: any) {
+              Toast.show({
+                type: "error",
+                position: "top",
+                text2: error?.message,
+                visibilityTime: 3000,
+                autoHide: true,
+                topOffset: 50,
+                bottomOffset: 50,
+              });
               console.log(error);
             }
           }}
@@ -162,6 +185,7 @@ const SignUpScreen = () => {
             </View>
           )}
         </Formik>
+        <Toast config={toastConfig} />
       </ScrollView>
     </SafeAreaView>
   );
