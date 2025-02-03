@@ -1,6 +1,13 @@
 // Libraries Imports...
-import React from "react";
-import { View, Text, SafeAreaView, FlatList } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  FlatList,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -9,8 +16,34 @@ import Entypo from "@expo/vector-icons/Entypo";
 // Local Imports...
 import ButtonComp from "@/components/Button";
 import { styles } from "@/styles/screens/jobFinding";
+import { useRouter } from "expo-router";
 
 const JobFindingScreen = () => {
+  const [selectedJobs, setSelectedJobs] = useState<string[]>([]);
+  const router = useRouter();
+
+  const handleSelectedJobs = (value: string) => {
+    setSelectedJobs((prevSelectedJobs) => {
+      if (prevSelectedJobs.includes(value)) {
+        return prevSelectedJobs.filter((job) => job !== value);
+      } else {
+        return [...prevSelectedJobs, value];
+      }
+    });
+  };
+
+  const handlePress = () => {
+    if (selectedJobs.length === 0) {
+      Alert.alert("Please select at least one job!");
+      return;
+    }
+
+    router.push({
+      pathname: "/user-profile",
+      params: { selectedJobs: JSON.stringify(selectedJobs) },
+    });
+  };
+
   return (
     <SafeAreaView style={styles.safeAreaViewStyle}>
       <View>
@@ -33,7 +66,7 @@ const JobFindingScreen = () => {
             },
             {
               id: "4",
-              title: "Markeeting",
+              title: "Marketing",
               icon: (
                 <MaterialCommunityIcons
                   name="speaker-wireless"
@@ -50,9 +83,23 @@ const JobFindingScreen = () => {
           ]}
           numColumns={2}
           renderItem={({ item }) => (
-            <View style={styles.flatListRenderItemStyle}>
-              <View style={styles.flatListRenderIconStyle}>{item.icon}</View>
-              <Text style={styles.flatListRenderTextStyle}>{item.title}</Text>
+            <View
+              style={[
+                styles.flatListRenderItemStyle,
+                selectedJobs.includes(item.title) && styles.selectedJobBg,
+              ]}
+            >
+              <TouchableOpacity onPress={() => handleSelectedJobs(item.title)}>
+                <View
+                  style={[
+                    styles.flatListRenderIconStyle,
+                    selectedJobs.includes(item.title) && styles.selectedJobBg,
+                  ]}
+                >
+                  {item?.icon}
+                </View>
+              </TouchableOpacity>
+              <Text style={styles.flatListRenderTextStyle}>{item?.title}</Text>
             </View>
           )}
           ListHeaderComponent={
@@ -64,7 +111,7 @@ const JobFindingScreen = () => {
           }
           ListFooterComponent={
             <View style={styles.flatListFooterStyle}>
-              <ButtonComp title="Find Jobs" />
+              <ButtonComp title="Find Jobs" onPress={handlePress} />
             </View>
           }
           keyExtractor={(item) => item.id}

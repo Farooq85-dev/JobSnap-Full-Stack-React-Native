@@ -46,4 +46,8 @@ export const styles = StyleSheet.create({
     flatListFooterStyle: {
         padding: 20,
     },
+    selectedJobBg: {
+        borderWidth: 1,
+        borderColor: colorsPalette.primaryColor
+    },
 });

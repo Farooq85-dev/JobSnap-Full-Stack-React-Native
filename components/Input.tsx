@@ -12,7 +12,6 @@ interface InputPropTypes {
   onChangeText: (text: string) => void;
   onBlur: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
   value: string;
-  className?: string;
   otherStyles?: object;
 }
 
@@ -24,7 +23,6 @@ const InputComp = ({
   onChangeText,
   onBlur,
   value,
-  className,
   otherStyles,
 }: InputPropTypes) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -44,7 +42,6 @@ const InputComp = ({
             fontFamily: "KSM",
             ...otherStyles,
           }}
-          className={className}
           onChangeText={onChangeText}
           keyboardType={keyBoardType}
           onBlur={onBlur}
