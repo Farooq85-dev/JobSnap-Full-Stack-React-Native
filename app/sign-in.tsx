@@ -9,11 +9,17 @@ import InputComp from "@/components/Input";
 import { colorsPalette } from "@/constants/colors";
 import { userSignInSchema } from "@/schema";
 import { styles } from "@/styles/screens/sign-up";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { userSignIn } from "@/appWrite";
 import { toastConfig } from "@/config/toast";
+import { useEffect } from "react";
 
 const SignInScreen = () => {
+  const router = useRouter();
+  useEffect(() => {
+    router.push("/job-finding");
+  }, []);
+
   return (
     <SafeAreaView style={styles.safeAreaViewStyle}>
       <ScrollView style={styles.scrollViewStyle}>
@@ -42,10 +48,13 @@ const SignInScreen = () => {
               });
               console.log(user);
               errors.resetForm();
+              setTimeout(() => {
+                router.push("/job-finding");
+              }, 3500);
             } catch (error: any) {
               Toast.show({
                 type: "error",
-                position: "bottom",
+                position: "top",
                 text2: error?.message,
                 visibilityTime: 3000,
                 autoHide: true,

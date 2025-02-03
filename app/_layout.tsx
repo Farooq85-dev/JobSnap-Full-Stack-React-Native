@@ -27,6 +27,7 @@ const RootLayout = () => {
 
   return (
     <Stack
+      initialRouteName="job-finding"
       screenOptions={{
         headerTitleAlign: "left",
         headerTintColor: colorsPalette.tertiaryColor,
@@ -57,6 +58,12 @@ const RootLayout = () => {
         name="sign-in"
         options={{
           headerTitle: "Sign In",
+        }}
+      />
+      <Stack.Screen
+        name="job-finding"
+        options={{
+          headerTitle: "Job Finding",
         }}
       />
     </Stack>

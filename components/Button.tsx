@@ -29,6 +29,7 @@ const ButtonComp = ({ title, isLoading, onPress }: ButtonPropTypes) => {
           fontFamily: "KSB",
           fontSize: 18,
           color: colorsPalette.tertiaryColor,
+          letterSpacing: 1,
         }}
       >
         {title}
