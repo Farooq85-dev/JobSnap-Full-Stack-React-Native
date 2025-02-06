@@ -5,6 +5,8 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 // Local Imports...
 import { colorsPalette } from "@/constants/colors";
+import { UserContextProvider } from "@/context/user";
+import { UserInfoContextProvider } from "@/context/userInfo";
 
 const RootLayout = () => {
   const [loaded, error] = useFonts({
@@ -26,53 +28,56 @@ const RootLayout = () => {
   }
 
   return (
-    <Stack
-      initialRouteName="job-finding"
-      screenOptions={{
-        headerTitleAlign: "left",
-        headerTintColor: colorsPalette.tertiaryColor,
-        animation: "slide_from_right",
-        headerStyle: {
-          backgroundColor: colorsPalette.secondaryColor,
-        },
-        headerTitleStyle: {
-          fontFamily: "KSE",
-        },
-        statusBarStyle: "light",
-        statusBarBackgroundColor: colorsPalette.secondaryColor,
-      }}
-    >
-      <Stack.Screen
-        name="index"
-        options={{
-          headerTitle: "JOBSNAP",
-        }}
-      />
-      <Stack.Screen
-        name="sign-up"
-        options={{
-          headerTitle: "Sign Up",
-        }}
-      />
-      <Stack.Screen
-        name="sign-in"
-        options={{
-          headerTitle: "Sign In",
-        }}
-      />
-      <Stack.Screen
-        name="job-finding"
-        options={{
-          headerTitle: "Job Finding",
-        }}
-      />
-      <Stack.Screen
-        name="user-profile"
-        options={{
-          headerTitle: "User Profile",
-        }}
-      />
-    </Stack>
+    <UserContextProvider>
+      <UserInfoContextProvider>
+        <Stack
+          screenOptions={{
+            headerTitleAlign: "left",
+            headerTintColor: colorsPalette.tertiaryColor,
+            animation: "slide_from_right",
+            headerStyle: {
+              backgroundColor: colorsPalette.secondaryColor,
+            },
+            headerTitleStyle: {
+              fontFamily: "KSE",
+            },
+            statusBarStyle: "light",
+            statusBarBackgroundColor: colorsPalette.secondaryColor,
+          }}
+        >
+          <Stack.Screen
+            name="index"
+            options={{
+              headerTitle: "JOBSNAP",
+            }}
+          />
+          <Stack.Screen
+            name="sign-up"
+            options={{
+              headerTitle: "Sign Up",
+            }}
+          />
+          <Stack.Screen
+            name="sign-in"
+            options={{
+              headerTitle: "Sign In",
+            }}
+          />
+          <Stack.Screen
+            name="job-finding"
+            options={{
+              headerTitle: "Job Finding",
+            }}
+          />
+          <Stack.Screen
+            name="user-profile"
+            options={{
+              headerTitle: "User Profile",
+            }}
+          />
+        </Stack>
+      </UserInfoContextProvider>
+    </UserContextProvider>
   );
 };
 

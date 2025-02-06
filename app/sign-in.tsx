@@ -39,7 +39,7 @@ const SignInScreen = () => {
               );
               Toast.show({
                 type: "success",
-                position: "bottom",
+                position: "top",
                 text2: "You have been signin successfully!",
                 visibilityTime: 3000,
                 autoHide: true,

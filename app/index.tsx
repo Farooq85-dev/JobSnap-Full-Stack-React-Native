@@ -5,12 +5,24 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import ButtonComp from "@/components/Button";
 import { styles } from "@/styles/screens/index";
 import { useRouter } from "expo-router";
+import { useUserContext } from "@/context/user";
+import { useUserInfoContext } from "@/context/userInfo";
 
 const WelcomeScreen = () => {
   const router = useRouter();
-  const handlePress = () => {
+  const { isUser } = useUserContext();
+  const { isUserInfo } = useUserInfoContext();
+  const handlePress = async () => {
+    // if (isUser && isUserInfo) {
+    //   router.push("/sign-up");
+    // } else if (isUser && !isUserInfo) {
+    //   router.push("/job-finding");
+    // } else {
+    //   router.push("/sign-up");
+    // }
     router.push("/sign-up");
   };
+
   return (
     <SafeAreaView style={styles.safeAreaViewStyle}>
       <ScrollView contentContainerStyle={styles.scrollViewStyle}>
@@ -29,7 +41,7 @@ const WelcomeScreen = () => {
           </View>
           <ButtonComp
             onPress={() => handlePress()}
-            title="Continue with email"
+            title={isUser === false ? "Continue with email" : "Continue"}
           />
         </View>
       </ScrollView>
