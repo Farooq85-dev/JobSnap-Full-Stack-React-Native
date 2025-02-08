@@ -1,9 +1,15 @@
 // Libraries Imports...
 import { Client, Account, ID, Databases, Storage } from "react-native-appwrite";
 
+const projectId = process.env?.EXPO_PUBLIC_APPWRITE_PROJECT_ID;
+const platform = process.env?.EXPO_PUBLIC_PROJECT_NAME;
+const dbID = process.env?.EXPO_PUBLIC_DATABASE_ID;
+const userInfoCollectionId = process.env?.EXPO_PUBLIC_USER_COLLECTION_ID;
+const storageId = process.env?.EXPO_PUBLIC_STORAGE_ID;
+
 const client = new Client()
-  .setProject("679f1c3e00061a839ce7")
-  .setPlatform("com.mf.jobsnap");
+  .setProject(projectId!)
+  .setPlatform(platform!);
 
 // Account Instance
 export const account = new Account(client);
@@ -52,7 +58,7 @@ const databases = new Databases(client);
 export const saveUserInfo = async (data: { userFullName: string, userAge: string, userEmail: string, userFindLocation: string, userPhoneNumber: string }, selectedJobs: string | string[]) => {
   try {
     const loggedInUser = await getUser();
-    const userInfo = await databases.createDocument("67a09b9f002938cd33ef", "67a09bc20013a7477854", loggedInUser?.$id, { ...data, selectedJobs })
+    const userInfo = await databases.createDocument(dbID!, userInfoCollectionId!, loggedInUser?.$id, { ...data, selectedJobs })
     return userInfo;
   } catch (error: any) {
     throw new Error(error?.message || "Please try again!")
@@ -62,7 +68,7 @@ export const saveUserInfo = async (data: { userFullName: string, userAge: string
 export const getUserInfo = async () => {
   try {
     const loggedInUser = await getUser();
-    const userInfo = await databases.getDocument("67a09b9f002938cd33ef", "67a09bc20013a7477854", loggedInUser?.$id);
+    const userInfo = await databases.getDocument(dbID!, userInfoCollectionId!, loggedInUser?.$id);
     return userInfo;
   } catch (error: any) {
     // throw new Error(error?.message)
@@ -84,7 +90,7 @@ const storage = new Storage(client);
 
 export const uplaodFile = async (file: { name: string, type: string, size: number, uri: string }, fileId: string) => {
   try {
-    await storage.createFile("67a1bc21001a86b300d5", fileId, file)
+    await storage.createFile(storageId!, fileId, file)
   } catch (error: any) {
     throw new Error(error?.messgae || "Please try again!")
   }
