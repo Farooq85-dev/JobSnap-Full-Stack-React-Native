@@ -1,5 +1,5 @@
 // Libraries Imports...
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { Formik } from "formik";
 import {
@@ -34,6 +34,10 @@ const UserProfileScreen = () => {
 
   const router = useRouter();
   const params = useLocalSearchParams();
+
+  useEffect(() => {
+    router.push("/(tabs)/index");
+  }, []);
 
   let parsedJobs: string[] = [];
   if (typeof params?.selectedJobs === "string") {
