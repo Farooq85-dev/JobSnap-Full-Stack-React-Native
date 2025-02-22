@@ -23,3 +23,7 @@ export const userProfileSchema = Yup.object({
   userEmail: Yup.string().email().required(),
   userPhoneNumber: Yup.string().min(11).max(11).required(),
 });
+
+export const jobSearchSchama = Yup.object({
+  jobTitle: Yup.string().min(1).required(),
+});

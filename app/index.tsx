@@ -20,7 +20,7 @@ const WelcomeScreen = () => {
     // } else {
     //   router.push("/sign-up");
     // }
-    router.push("/sign-up");
+    router.push("/(tabs)");
   };
 
   return (
