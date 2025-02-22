@@ -36,7 +36,7 @@ const UserProfileScreen = () => {
   const params = useLocalSearchParams();
 
   useEffect(() => {
-    router.push("/(tabs)/index");
+    router.push("/(tabs)");
   }, []);
 
   let parsedJobs: string[] = [];
