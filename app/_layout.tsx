@@ -75,6 +75,12 @@ const RootLayout = () => {
               headerTitle: "User Profile",
             }}
           />
+          <Stack.Screen
+            name="job-detail"
+            options={{
+              headerTitle: "",
+            }}
+          />
         </Stack>
       </UserInfoContextProvider>
     </UserContextProvider>
