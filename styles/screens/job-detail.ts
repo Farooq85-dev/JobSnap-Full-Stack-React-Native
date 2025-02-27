@@ -1,7 +1,6 @@
 // Libraries Imports...
 import { StyleSheet } from "react-native";
 
-
 export const styles = StyleSheet.create(
     {
         manScreenContainerStyle: {
@@ -42,8 +41,8 @@ export const styles = StyleSheet.create(
             gap: 10,
         }, jobBadgeBgStyle: {
             fontFamily: "KSM",
-            fontSize: 16,
-            borderRadius: 20,
+            fontSize: 14,
+            borderRadius: 10,
             borderColor: "grey",
             borderWidth: 2,
             paddingHorizontal: 10,
