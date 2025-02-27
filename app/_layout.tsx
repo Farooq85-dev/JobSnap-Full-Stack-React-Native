@@ -28,7 +28,7 @@ const RootLayout = () => {
   }
 
   return (
-    <UserContextProvider>
+    <UserContextProvider> 
       <UserInfoContextProvider>
         <Stack
           screenOptions={{
@@ -77,6 +77,12 @@ const RootLayout = () => {
           />
           <Stack.Screen
             name="job-detail"
+            options={{
+              headerTitle: "",
+            }}
+          />
+          <Stack.Screen
+            name="company-detail"
             options={{
               headerTitle: "",
             }}

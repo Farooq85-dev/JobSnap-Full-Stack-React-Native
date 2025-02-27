@@ -90,15 +90,23 @@ const HomeScreen = () => {
             jobType: "Full-time",
             jobStatus: "On-Site",
             jobLevel: "Mid level",
-            jobSalaryPerMonth: "13K/ year",
+            jobSalaryPerMonth: "1.08K/ month",
             companyPrimaryLogoColor: "#ff6347",
             companyCountryName: "Pakistan",
-            jobDescription:
-              "As a Marketing Manager, you will be responsible for developing marketing strategies, overseeing campaigns, and ensuring the company's brand presence is strong in the market. The role involves managing a team, conducting market research, and collaborating with the sales department.",
-            requiredSkills:
-              "Strong communication skills, Project management experience, Proficiency in digital marketing tools, SEO/SEM expertise, Team leadership and collaboration, Analytical mindset",
+            currentCompanyEmplyees: 70,
+            companyCityName: "Karachi",
             companyDescription:
               "Global Solutions is a leading marketing consultancy firm that offers a wide range of services to global clients. Based in Pakistan, the company has a diverse team of professionals and focuses on delivering innovative and impactful marketing strategies to help businesses thrive in the digital age.",
+            companyWebsite: "https://www.globalsolutions.com",
+            companyScope: "Global",
+            officePerks:
+              "Flexible working hours, Health insurance, Paid leave, Team-building activities",
+            jobDescription:
+              "As a Marketing Manager, you will be responsible for developing marketing strategies, overseeing campaigns, and ensuring the company's brand presence is strong in the market. The role involves managing a team, conducting market research, and collaborating with the sales department.",
+            jobResponsibilities:
+              "Develop and implement marketing strategies. Oversee and manage marketing campaigns. Ensure consistent brand messaging across all marketing channels. Conduct market research to understand customer needs and preferences. Work with cross-functional teams to align marketing goals with business objectives.",
+            jobRequiredSkills:
+              "Strong communication skills. Project management experience. Proficiency in digital marketing tools. SEO/SEM expertise. Team leadership and collaboration. Analytical mindset.",
           },
           {
             id: "129376",
@@ -107,15 +115,23 @@ const HomeScreen = () => {
             jobType: "Full-time",
             jobStatus: "Remote",
             jobLevel: "Junior level",
-            jobSalaryPerMonth: "8K/ year",
+            jobSalaryPerMonth: "667k/ month",
             companyPrimaryLogoColor: "#4682b4",
             companyCountryName: "India",
-            jobDescription:
-              "As a Software Engineer, you will be developing high-performance applications and writing efficient, maintainable code. You'll work closely with a team of developers to improve product functionality and deliver solutions that align with the company's goals.",
-            requiredSkills:
-              "Proficiency in Java, Strong problem-solving abilities, Experience with Git, Understanding of algorithms and data structures, Ability to work in an Agile environment",
+            companyCityName: "Bangalore",
+            currentCompanyEmplyees: 15,
             companyDescription:
               "Tech Innovators is an emerging software development company in India. We specialize in providing innovative tech solutions and digital transformations to startups and established businesses alike.",
+            companyWebsite: "https://www.techinnovators.in",
+            companyScope: "National",
+            officePerks:
+              "Remote working options, Career development programs, Employee wellness initiatives",
+            jobDescription:
+              "As a Software Engineer, you will be developing high-performance applications and writing efficient, maintainable code. You'll work closely with a team of developers to improve product functionality and deliver solutions that align with the company's goals.",
+            jobResponsibilities:
+              "Develop high-performance and scalable applications. Write clean, efficient, and maintainable code. Collaborate with a team of developers to design, develop, and maintain software solutions. Participate in code reviews to ensure quality and adherence to best practices. Work on troubleshooting, debugging, and optimizing existing code.",
+            jobRequiredSkills:
+              "Proficiency in Java. Strong problem-solving abilities. Experience with Git. Understanding of algorithms and data structures. Ability to work in an Agile environment.",
           },
           {
             id: "129377",
@@ -124,15 +140,23 @@ const HomeScreen = () => {
             jobType: "Part-time",
             jobStatus: "On-Site",
             jobLevel: "Senior level",
-            jobSalaryPerMonth: "15K/ year",
+            jobSalaryPerMonth: "1.25K/ month",
             companyPrimaryLogoColor: "#32cd32",
             companyCountryName: "USA",
-            jobDescription:
-              "The Sustainability Consultant will work with clients to create sustainability strategies and ensure that green practices are integrated into their operations. This role requires knowledge of environmental regulations and sustainable development goals.",
-            requiredSkills:
-              "Deep understanding of sustainability practices, Knowledge of environmental laws, Strong research and analytical skills, Ability to create actionable reports, Communication and client management skills",
+            companyCityName: "San Francisco",
+            currentCompanyEmplyees: 30,
             companyDescription:
               "GreenTech Ventures is a leading sustainability consultancy based in the USA. We work with companies worldwide to help them adopt eco-friendly practices and meet sustainability goals, driving green innovations across industries.",
+            companyWebsite: "https://www.greentechventures.com",
+            companyScope: "Global",
+            officePerks:
+              "Eco-friendly office, Flexible schedules, Paid volunteer days, Team sustainability initiatives",
+            jobDescription:
+              "The Sustainability Consultant will work with clients to create sustainability strategies and ensure that green practices are integrated into their operations. This role requires knowledge of environmental regulations and sustainable development goals.",
+            jobResponsibilities:
+              "Work with clients to create sustainability strategies. Ensure that sustainability practices are integrated into business operations. Monitor and assess the impact of sustainability initiatives. Prepare sustainability reports and present findings to clients. Stay up to date with environmental regulations and industry trends.",
+            jobRequiredSkills:
+              "Deep understanding of sustainability practices. Knowledge of environmental laws and regulations. Strong research and analytical skills. Ability to create actionable sustainability reports. Excellent communication and client management skills.",
           },
           {
             id: "129378",
@@ -141,15 +165,23 @@ const HomeScreen = () => {
             jobType: "Freelance",
             jobStatus: "Remote",
             jobLevel: "Entry level",
-            jobSalaryPerMonth: "5K/ year",
+            jobSalaryPerMonth: "417k/ month",
             companyPrimaryLogoColor: "#ff1493",
             companyCountryName: "Canada",
-            jobDescription:
-              "The Graphic Designer will be responsible for creating visual concepts for marketing materials, social media, websites, and branding. You'll work closely with the creative team to bring concepts to life.",
-            requiredSkills:
-              "Proficiency in Adobe Creative Suite, Understanding of typography and layout design, Strong creativity, Ability to work independently, Time management skills",
+            companyCityName: "Toronto",
+            currentCompanyEmplyees: 12,
             companyDescription:
               "Creative Works is a Canadian creative agency that focuses on delivering stunning visual designs and branding services to clients in various industries, from fashion to tech.",
+            companyWebsite: "https://www.creativeworks.com",
+            companyScope: "National",
+            officePerks:
+              "Work from home, Creative collaboration, Paid time off, Flexible hours",
+            jobDescription:
+              "The Graphic Designer will be responsible for creating visual concepts for marketing materials, social media, websites, and branding. You'll work closely with the creative team to bring concepts to life.",
+            jobResponsibilities:
+              "Create visual concepts for marketing materials, websites, and branding. Collaborate with the creative team to develop design ideas and execute them. Ensure design consistency across all materials. Meet project deadlines and client expectations. Provide input on design strategy and user experience.",
+            jobRequiredSkills:
+              "Proficiency in Adobe Creative Suite (Photoshop, Illustrator, etc.). Understanding of typography and layout design. Strong creativity and attention to detail. Ability to work independently and manage time effectively. Good communication and collaboration skills.",
           },
         ]}
         renderItem={({ item }) => (
@@ -169,6 +201,15 @@ const HomeScreen = () => {
                       jobSalaryPerMonth: item?.jobSalaryPerMonth,
                       companyPrimaryLogoColor: item?.companyPrimaryLogoColor,
                       companyCountryName: item?.companyCountryName,
+                      companyCityName: item?.companyCityName,
+                      companyScope: item?.companyScope,
+                      companyDescription: item?.companyDescription,
+                      companyWebsite: item?.companyWebsite,
+                      currentCompanyEmplyees: item?.currentCompanyEmplyees,
+                      officePerks: item?.officePerks,
+                      jobDescription: item?.jobDescription,
+                      jobResponsibilities: item?.jobResponsibilities,
+                      jobRequiredSkills: item?.jobRequiredSkills,
                     },
                   }}
                 >

@@ -22,7 +22,7 @@ import InputComp from "@/components/Input";
 import { toastConfig } from "@/config/toast";
 import { colorsPalette } from "@/constants/colors";
 import { userProfileSchema } from "@/schema";
-import { styles } from "@/styles/screens/userProfile";
+import { styles } from "@/styles/screens/user-profile";
 import { useUserContext } from "@/context/user";
 
 const UserProfileScreen = () => {

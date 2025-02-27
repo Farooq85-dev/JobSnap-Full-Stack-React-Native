@@ -15,7 +15,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Entypo from "@expo/vector-icons/Entypo";
 // Local Imports...
 import ButtonComp from "@/components/Button";
-import { styles } from "@/styles/screens/jobFinding";
+import { styles } from "@/styles/screens/job-finding";
 import { useRouter } from "expo-router";
 
 const JobFindingScreen = () => {

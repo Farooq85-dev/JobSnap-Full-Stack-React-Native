@@ -1,10 +1,9 @@
 // Libraries Imports...
-import { useLocalSearchParams } from "expo-router";
+import { Link, useLocalSearchParams } from "expo-router";
 import { View, Text, ScrollView } from "react-native";
 // Local Imports...
 import ButtonComp from "@/components/Button";
-
-const description = "Manage onboarding and offboarding web apps.";
+import { styles } from "@/styles/screens/job-detail";
 
 const JobDetailScreen = () => {
   const {
@@ -17,206 +16,111 @@ const JobDetailScreen = () => {
     jobSalaryPerMonth,
     companyPrimaryLogoColor,
     companyCountryName,
+    companyCityName,
+    companyScope,
+    companyDescription,
+    companyWebsite,
+    currentCompanyEmplyees,
+    officePerks,
+    jobDescription,
+    jobResponsibilities,
+    jobRequiredSkills,
   } = useLocalSearchParams();
+
   return (
-    <View
-      style={{
-        flex: 1,
-        padding: 20,
-      }}
-    >
-      <ScrollView
-        style={{
-          flexGrow: 1,
-        }}
-      >
-        <View
-          style={{
-            gap: 10,
-          }}
-        >
-          <View
-            style={{
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              gap: 10,
-            }}
-          >
-            <View
-              style={{
-                width: "30%",
-                alignItems: "center",
-                borderRadius: 10,
-                padding: 20,
-                backgroundColor: `${companyPrimaryLogoColor}`,
+    <View style={styles.manScreenContainerStyle}>
+      <ScrollView style={styles.scrollViewStyle}>
+        <View style={styles.allContainersContainerStyle}>
+          <View style={styles.companyDetailContainerStyle}>
+            <Link
+              href={{
+                pathname: "/company-detail",
+                params: {
+                  companyCityName,
+                  companyScope,
+                  companyDescription,
+                  companyWebsite,
+                  currentCompanyEmplyees,
+                  officePerks,
+                  companyPrimaryLogoColor,
+                  companyCountryName,
+                  companyName,
+                },
               }}
             >
-              <Text
-                style={{
-                  fontFamily: "KSB",
-                  fontSize: 30,
-                }}
+              <View
+                style={[
+                  {
+                    backgroundColor: `${companyPrimaryLogoColor}`,
+                  },
+                  styles.companyBgStyle,
+                ]}
               >
-                {companyName.toLocaleString().slice(0, 1).toLocaleUpperCase()}
-              </Text>
-            </View>
+                <Text style={styles.comapnyLogoTextStyle}>
+                  {companyName.toLocaleString().slice(0, 1).toLocaleUpperCase()}
+                </Text>
+              </View>
+            </Link>
             <View>
-              <Text
-                style={{
-                  fontFamily: "KSB",
-                  fontSize: 20,
-                }}
-              >
-                {companyName}
-              </Text>
-              <Text
-                style={{
-                  fontFamily: "KSM",
-                  fontSize: 18,
-                }}
-              >
+              <Text style={styles.comapnyNameTextStyle}>{companyName}</Text>
+              <Text style={styles.companyCountryNameStyle}>
                 {companyCountryName}
               </Text>
             </View>
           </View>
-          <View
-            style={{
-              borderColor: "grey",
-              borderWidth: 1,
-              opacity: 0.2,
-            }}
-          ></View>
-          <View
-            style={{
-              gap: 10,
-            }}
-          >
-            <Text
-              style={{
-                fontFamily: "KSB",
-                fontSize: 18,
-              }}
-            >
-              Job Overview
-            </Text>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <Text
-                style={{
-                  fontFamily: "KSM",
-                  fontSize: 16,
-                  borderRadius: 20,
-                  borderColor: "grey",
-                  borderWidth: 2,
-                  paddingHorizontal: 10,
-                  paddingVertical: 5,
-                }}
-              >
-                {jobType}
-              </Text>
-              <Text
-                style={{
-                  fontFamily: "KSM",
-                  fontSize: 16,
-                  borderRadius: 20,
-                  borderColor: "grey",
-                  borderWidth: 2,
-                  paddingHorizontal: 10,
-                  paddingVertical: 5,
-                }}
-              >
-                {jobStatus}
-              </Text>
-              <Text
-                style={{
-                  fontFamily: "KSM",
-                  fontSize: 16,
-                  borderRadius: 20,
-                  borderColor: "grey",
-                  borderWidth: 2,
-                  paddingHorizontal: 10,
-                  paddingVertical: 5,
-                }}
-              >
-                {jobSalaryPerMonth}
-              </Text>
+          <View style={styles.dividerStyle}></View>
+          <View style={styles.jobOverviewContainerStyle}>
+            <Text style={styles.jobOverviewTextStyle}>Job Overview</Text>
+            <View style={styles.jobDetailBadgesContainerStyle}>
+              <Text style={styles.jobBadgeBgStyle}>{jobType}</Text>
+              <Text style={styles.jobBadgeBgStyle}>{jobStatus}</Text>
+              <Text style={styles.jobBadgeBgStyle}>{jobSalaryPerMonth}</Text>
             </View>
-            <View
-              style={{
-                gap: 10,
-              }}
-            >
-              <Text
-                style={{
-                  fontFamily: "KSB",
-                  fontSize: 18,
-                }}
-              >
+            <View style={styles.descriptionContainerStyle}>
+              <Text style={styles.descriptionHeadingTextStyle}>
                 Description
               </Text>
-              <Text
-                style={{
-                  fontFamily: "KSM",
-                  fontSize: 14,
-                }}
-              >
-                We are looking for a skillful web developer.
-              </Text>
+              <Text style={styles.descriptionTextStyle}>{jobDescription}</Text>
             </View>
-            <View
-              style={{
-                gap: 10,
-              }}
-            >
+            <View style={styles.responsibilitiesContainerStyle}>
               <Text
-                style={{
-                  fontFamily: "KSB",
-                  fontSize: 18,
-                }}
+                style={
+                  styles.responsibilityHeadingAndRequiredSkillsHeadingTextStyle
+                }
               >
                 Responsibilities
               </Text>
-              {description?.split(". ")?.map((v, i) => (
-                <Text
-                  key={i}
-                  style={{
-                    fontFamily: "KSM",
-                    fontSize: 14,
-                  }}
-                >
-                  {"- " + v}
-                </Text>
-              ))}
+              {jobResponsibilities
+                ?.toLocaleString()
+                .split(". ")
+                ?.map((v, i) => (
+                  <Text
+                    key={i}
+                    style={styles.responsibilityAndRequiredSkillsTextStyle}
+                  >
+                    {"- " + v}
+                  </Text>
+                ))}
             </View>
-            <View
-              style={{
-                gap: 10,
-              }}
-            >
+            <View style={styles.requiredSkillsContainerStyle}>
               <Text
-                style={{
-                  fontFamily: "KSB",
-                  fontSize: 18,
-                }}
+                style={
+                  styles.responsibilityHeadingAndRequiredSkillsHeadingTextStyle
+                }
               >
                 Required Skills
               </Text>
-              {description?.split(". ")?.map((v, i) => (
-                <Text
-                  key={i}
-                  style={{
-                    fontFamily: "KSM",
-                    fontSize: 14,
-                  }}
-                >
-                  {"- " + v}
-                </Text>
-              ))}
+              {jobRequiredSkills
+                ?.toLocaleString()
+                .split(". ")
+                ?.map((v, i) => (
+                  <Text
+                    key={i}
+                    style={styles.responsibilityAndRequiredSkillsTextStyle}
+                  >
+                    {"- " + v}
+                  </Text>
+                ))}
             </View>
             <ButtonComp title="Apply Now" />
           </View>
